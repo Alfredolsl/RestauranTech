@@ -37,7 +37,8 @@ class LoginForm(FlaskForm):
                              render_kw={"placeholder": "Password"})
     submit = SubmitField("Login")
 
-class InventoryForm(FlaskForm):
+
+class NewItemForm(FlaskForm):
     """ Represents form to add item to inventory """
     import MySQLdb
     from os import getenv
@@ -51,6 +52,7 @@ class InventoryForm(FlaskForm):
     # for user to select the name of an asset/branch, then gets translated to the id.
     cur.execute("SELECT branch_id, name FROM branch")
     branch_rows = cur.fetchall()
+    #print([(row[0], f"{row[1]} ID:{row}") for row in branch_rows])
     branch_id =  SelectField(choices=[row for row in branch_rows], validators=[InputRequired()], render_kw={"placeholder": "Select Branch"})
     
     cur.execute("SELECT asset_id, name FROM assets")
@@ -61,8 +63,31 @@ class InventoryForm(FlaskForm):
     db.close()
     
     quantity_in_stock = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Stock Quantity"})
-    unit_of_measure = SelectField(choices=['g', 'kg', 'ml', 'L'])
+    unit_of_measure = SelectField(choices=['g', 'kg', 'ml', 'L', 'pieces'])
     average_price = FloatField(validators=[InputRequired()], render_kw={"placeholder": "0.00"})
     shelf_life = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Shelf Life"})
     shelf_life_unit = SelectField(choices=['days', 'months', 'years'])
     submit = SubmitField("Add Item to Inventory")
+
+
+class ModifyItemForm(FlaskForm):
+    """ Represents form to modify existing item in inventory """
+    import MySQLdb
+    from os import getenv
+    db = MySQLdb.connect(host=getenv('DB_HOST'), port=int(getenv('DB_PORT')),
+                         user=getenv('DB_USER'),
+                         passwd=getenv('DB_PASSWORD'),
+                         db=getenv('DATABASE'))
+    cur = db.cursor()
+    cur.execute("SELECT branch_id, name FROM branch")
+    branch_rows_in_inventory = cur.fetchall()
+
+    total_branch_ids = SelectField(choices=[row for row in branch_rows_in_inventory])
+    total_asset_ids = SelectField(choices=["Select a branch first"])
+
+    quantity_in_stock = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Stock Quantity"})
+    unit_of_measure = SelectField(choices=['g', 'kg', 'ml', 'L', 'pieces'])
+    average_price = FloatField(validators=[InputRequired()], render_kw={"placeholder": "0.00"})
+    shelf_life = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Shelf Life"})
+    shelf_life_unit = SelectField(choices=['days', 'months', 'years'])
+    submit = SubmitField("Modify Item")

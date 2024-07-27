@@ -1,6 +1,6 @@
 """ File containing all routes for the project """
 from app import app, db, login_manager
-from app.forms import RegisterForm, LoginForm, InventoryForm
+from app.forms import RegisterForm, LoginForm, NewItemForm, ModifyItemForm
 from app.models.user import User
 from app.models.inventory import Inventory
 from flask import render_template, redirect, url_for, session
@@ -78,7 +78,7 @@ def logout():
 
 @app.route('/inventory', methods=["GET", "POST"])
 def inventory():
-    form = InventoryForm()
+    form = NewItemForm()
 
     if form.is_submitted():
         branch_id = form.branch_id.data
@@ -89,12 +89,44 @@ def inventory():
         shelf_life = form.shelf_life.data
         shelf_life_unit = form.shelf_life_unit.data
 
-        new_item = Inventory(branch_id=branch_id, asset_id=asset_id,
-                             quantity_in_stock=quantity_in_stock, unit_of_measure=unit_of_measure,
-                             average_price=average_price, shelf_life=shelf_life,
-                             shelf_life_unit=shelf_life_unit)
-        db.session.add(new_item)
-        db.session.commit()
-        print("item added successfully!")
+        existing_item = Inventory.query.filter_by(branch_id=branch_id, asset_id=asset_id).first()
+        if existing_item:
+            print("item already exists.")
+        else:
+            new_item = Inventory(branch_id=branch_id, asset_id=asset_id,
+                                quantity_in_stock=quantity_in_stock, unit_of_measure=unit_of_measure,
+                                average_price=average_price, shelf_life=shelf_life,
+                                shelf_life_unit=shelf_life_unit)
+            db.session.add(new_item)
+            db.session.commit()
+            print("item added successfully!")
 
     return render_template('inventory.html', form=form)
+
+@app.route('/editinv', methods=["GET", "POST"])
+def editinv():
+    form = ModifyItemForm()
+    can_modify = False
+
+    if form.is_submitted():
+        from os import getenv
+        import MySQLdb
+        db = MySQLdb.connect(host=getenv('DB_HOST'), port=int(getenv('DB_PORT')),
+                         user=getenv('DB_USER'),
+                         passwd=getenv('DB_PASSWORD'),
+                         db=getenv('DATABASE'))
+        cur = db.cursor()
+        selected_branch_id = form.total_branch_ids.data
+        cur.execute(f"SELECT inv.asset_id, assets.name \
+                    FROM inventory inv \
+                    INNER JOIN assets \
+                    ON inv.asset_id = assets.asset_id \
+                    WHERE inv.branch_id = {selected_branch_id}")
+        total_branch_ids_from_asset_id = cur.fetchall()
+
+        can_modify = True
+
+        form.total_asset_ids.choices = [ids for ids in total_branch_ids_from_asset_id]
+
+
+    return render_template("edit_inventory.html", form=form, can_modify=can_modify)

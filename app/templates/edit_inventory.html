@@ -7,15 +7,19 @@
 </head>
 <body>
     <h1>RestauranTech</h1>
-    <h2>Add new item to Inventory</h2>
+    <h2>Modify Item</h2>
     <form action="" method="POST">
-        {{ form.branch_id }}
-        {{ form.asset_id }}
+        {{ form.total_branch_ids }}
+        {{ form.total_asset_ids }}
+        
+        {% if can_modify %}
         {{ form.quantity_in_stock }}
         {{ form.unit_of_measure }}
         {{ form.average_price }}
         {{ form.shelf_life }}
         {{ form.shelf_life_unit }}
+        {% endif %}
+
         {{ form.submit }}
     </form>
 </body>
