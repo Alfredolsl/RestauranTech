@@ -1,233 +1,181 @@
-{% extends 'elements/base.html' %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
+{% extends 'elements/base.html' %} {% block title %}Home{% endblock %} {% block
+content %}
 <!--Features Section-->
 <section id="features">
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-        <div class="col-md-6 p-lg-5 mx-auto my-5">
-            <h1 class="display-3 fw-bold">Designed for engineers</h1>
-            <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
-            <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                <a class="icon-link" href="#">
-                    Learn more
-                    <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-                </a>
-                <a class="icon-link" href="#">
-                    Buy
-                    <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-                </a>
-            </div>
-        </div>
-        <div class="product-device shadow-sm d-none d-md-block"></div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  <div
+    class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary"
+    style="background-image:url('{{ url_for('static', filename='images/hero_background1.webp') }}');background-position:center;background-size: auto 100%;background-repeat:no-repeat;"
+  >
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1
+        class="display-3 fw-bold"
+        style="color: #b0dfe0; text-shadow: -3px 3px 1px #2596be"
+      >
+        RestauranTech
+      </h1>
+      <h3
+        class="fw-normal mb-3"
+        style="color: #fff; text-shadow: -3px 3px 3px black"
+      >
+        Manage your inventory in a smarter way.
+      </h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <a class="icon-link" href="#about">
+          Learn more
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+        <a class="icon-link" href="/login">
+          Sign up
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+      </div>
     </div>
-    <div class="container px-4 py-5">
-        <h2 class="pb-2 border-bottom">Features with title</h2>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div
+      class="product-device product-device-2 shadow-sm d-none d-md-block"
+    ></div>
+  </div>
+  <div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">We got you covered</h2>
 
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
-            <div class="col d-flex flex-column align-items-start gap-2">
-                <h2 class="fw-bold text-body-emphasis">Left-aligned title explaining these awesome features</h2>
-                <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                <a href="#" class="btn btn-primary btn-lg">Primary button</a>
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+      <div class="col d-flex flex-column align-items-start gap-2">
+        <h2 class="fw-bold text-body-emphasis">
+          Control your inventory and prevent your demand.
+        </h2>
+        <p class="text-body-secondary">
+          With RestauranTech you only need to think on what you do best and let
+          us handle all the logistics
+        </p>
+        <a href="/register" class="btn btn-primary btn-lg">Sign up</a>
+      </div>
+
+      <div class="col">
+        <div class="row row-cols-1 row-cols-sm-2 g-4">
+          <div class="col d-flex flex-column gap-2">
+            <div
+              class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+            >
+              <svg class="bi" width="1em" height="1em">
+                <use xlink:href="#collection"></use>
+              </svg>
             </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">Reduce waste.</h4>
+            <p class="text-body-secondary">
+              We make suggestions on how much you should buy based on your
+              historical data
+            </p>
+          </div>
 
-            <div class="col">
-                <div class="row row-cols-1 row-cols-sm-2 g-4">
-                    <div class="col d-flex flex-column gap-2">
-                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                            <svg class="bi" width="1em" height="1em">
-                                <use xlink:href="#collection"></use>
-                            </svg>
-                        </div>
-                        <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
-                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
-                    </div>
-
-                    <div class="col d-flex flex-column gap-2">
-                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                            <svg class="bi" width="1em" height="1em">
-                                <use xlink:href="#gear-fill"></use>
-                            </svg>
-                        </div>
-                        <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
-                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
-                    </div>
-
-                    <div class="col d-flex flex-column gap-2">
-                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                            <svg class="bi" width="1em" height="1em">
-                                <use xlink:href="#speedometer"></use>
-                            </svg>
-                        </div>
-                        <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
-                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
-                    </div>
-
-                    <div class="col d-flex flex-column gap-2">
-                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                            <svg class="bi" width="1em" height="1em">
-                                <use xlink:href="#table"></use>
-                            </svg>
-                        </div>
-                        <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
-                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
-                    </div>
-                </div>
+          <div class="col d-flex flex-column gap-2">
+            <div
+              class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+            >
+              <svg class="bi" width="1em" height="1em">
+                <use xlink:href="#gear-fill"></use>
+              </svg>
             </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">
+              Prevent your demand.
+            </h4>
+            <p class="text-body-secondary">
+              We will notify you when it's time to restock your supplies.
+            </p>
+          </div>
+
+          <div class="col d-flex flex-column gap-2">
+            <div
+              class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+            >
+              <svg class="bi" width="1em" height="1em">
+                <use xlink:href="#speedometer"></use>
+              </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">
+              Get the best prices
+            </h4>
+            <p class="text-body-secondary">
+              We will compare the price of your products with different
+              suppliers to get you the best prices.
+            </p>
+          </div>
+
+          <div class="col d-flex flex-column gap-2">
+            <div
+              class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+            >
+              <svg class="bi" width="1em" height="1em">
+                <use xlink:href="#table"></use>
+              </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">
+              Control your earnings
+            </h4>
+            <p class="text-body-secondary">
+              We will generate a dashboard with your profit and additional data
+            </p>
+          </div>
         </div>
+      </div>
     </div>
-</section>
-
-<!--Pricing Section-->
-<section id="pricing">
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
-        <p class="fs-5 text-body-secondary">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
-    </div>
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Free</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>10 users included</li>
-                        <li>2 GB of storage</li>
-                        <li>Email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Pro</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>20 users included</li>
-                        <li>10 GB of storage</li>
-                        <li>Priority email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                <div class="card-header py-3 text-bg-primary border-primary">
-                    <h4 class="my-0 fw-normal">Enterprise</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-    <div class="table-responsive">
-        <table class="table text-center">
-            <thead>
-            <tr>
-                <th style="width: 34%;"></th>
-                <th style="width: 22%;">Free</th>
-                <th style="width: 22%;">Pro</th>
-                <th style="width: 22%;">Enterprise</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row" class="text-start">Public</th>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Private</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            </tbody>
-
-            <tbody>
-            <tr>
-                <th scope="row" class="text-start">Permissions</th>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Sharing</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Unlimited members</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Extra security</th>
-                <td></td>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<!--Frequently Asked Questions Section-->
-<section id="faqs">
-    <h3>FAQs</h3>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+  </div>
 </section>
 
 <!--About Section-->
 <section id="about">
-    <h3>About</h3>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+  <div class="px-4 py-5 my-5 text-center">
+    <img
+      class="d-block mx-auto mb-4"
+      src="{{ url_for('static', filename='images/logo.png') }}"
+      alt=""
+      width="72"
+      height="57"
+    />
+    <h1 class="display-5 fw-bold text-body-emphasis">About</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        RestauranTech is a web application designed to optimize restaurant
+        operations through advanced inventory management, cost control, and
+        supplier price analysis. The app allows restaurants to manage the stock
+        of ingredients, beverages, and other supplies in real-time, as well as
+        monitor and control expenses related to purchases.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div class="row">
+          <div class="col-lg-4">
+            <img
+              src="{{ url_for('static', filename='images/alehman.png') }}"
+              style="width: 140px; height: 140px; border-radius: 100%"
+            />
+            <h2 class="fw-normal">Alfredo Lehman</h2>
+            <p>Software developer</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img
+              src="{{ url_for('static', filename='images/ejimenez.png') }}"
+              style="width: 140px; height: 140px; border-radius: 100%"
+            />
+
+            <h2 class="fw-normal">Efrén Jiménez</h2>
+            <p>Software developer</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img
+              src="{{ url_for('static', filename='images/jpuc.jpeg') }}"
+              style="width: 140px; height: 140px; border-radius: 100%"
+            />
+            <h2 class="fw-normal">José Puc</h2>
+            <p>Software developer</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
