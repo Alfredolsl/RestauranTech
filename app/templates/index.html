@@ -4,28 +4,28 @@ content %}
 <section id="features">
   <div
     class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary"
-    style="background-image:url('{{ url_for('static', filename='images/hero_background1.webp') }}');background-position:center;background-size: auto 100%;background-repeat:no-repeat;"
+    style="ackground-image:url('{{ url_for('static', filename='images/hero_background1.webp') }}');background-position:center;background-size: auto 100%;background-repeat:no-repeat;"
   >
     <div class="col-md-6 p-lg-5 mx-auto my-5">
       <h1
         class="display-3 fw-bold"
-        style="color: #b0dfe0; text-shadow: -3px 3px 1px #2596be"
+        style="color: #b0dfe0;"
       >
         RestauranTech
       </h1>
       <h3
         class="fw-normal mb-3"
-        style="color: #fff; text-shadow: -3px 3px 3px black"
+        style="color: #fff;"
       >
         Manage your inventory in a smarter way.
       </h3>
       <div class="d-flex gap-3 justify-content-center lead fw-normal">
-        <a class="icon-link" href="#about">
-          Learn more
+        <a class="icon-link" href="/login">
+          Get started
           <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
         </a>
-        <a class="icon-link" href="/login">
-          Sign up
+        <a class="icon-link" href="#about">
+          Learn more
           <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
         </a>
       </div>
@@ -124,13 +124,6 @@ content %}
 <!--About Section-->
 <section id="about">
   <div class="px-4 py-5 my-5 text-center">
-    <img
-      class="d-block mx-auto mb-4"
-      src="{{ url_for('static', filename='images/logo.png') }}"
-      alt=""
-      width="72"
-      height="57"
-    />
     <h1 class="display-5 fw-bold text-body-emphasis">About</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">
