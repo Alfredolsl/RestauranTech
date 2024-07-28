@@ -1,6 +1,6 @@
 """ File containing all routes for the project """
 from app import app, db, login_manager
-from app.forms import RegisterForm, LoginForm
+from app.forms import RegisterForm, LoginForm, InventoryForm
 from app.models.user import User
 from flask import render_template, redirect, url_for, session
 from flask_login import login_user, logout_user, login_required, current_user
@@ -70,3 +70,13 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("home"))
+
+
+@app.route("/inventory", methods=["GET", "POST"])
+def inventory():
+    form = InventoryForm()
+
+    if form.is_submitted():
+        print(":3")
+
+    return render_template('inventory.html', form=form)
