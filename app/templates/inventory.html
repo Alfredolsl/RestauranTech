@@ -1,0 +1,35 @@
+{% extends 'admin.html' %}
+{% block content %}
+<article class="content dashboard-page">
+    <section class="section">
+       <div class="row sameheight-container">
+            <div class="col-xl-12">
+                <div class="card sameheight-item items" data-exclude="xs,sm,lg">
+                    <div class="card-header bordered">
+                        <div class="header-block" style="width:100%">
+                            <h3 class="title">Administrar categorías</span></h3>
+                            <a data-href="/administrador/?op=nCat" class="pull-right btn btn-primary btn-sm rounded" id="nCat" data-title="Agregar Categoría">Nueva categoría</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Usuario ID: {{ user_info.id }}</p>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover flip-content">
+                        <thead class="flip-header">
+                            <tr>
+                                <th class="center" style="width:10%;">#</th>
+                                <th class="center" style="width:10%;">Icono</th>
+                                <th class="center" style="width:40%;">Categoría</th>
+                                <th class="center" style="width:20%;"># Productos</th>
+                                <th class="center" style="width:20%;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resCats" class="short">                   		
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+{% endblock %}
