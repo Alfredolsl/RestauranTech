@@ -1,4 +1,4 @@
-from app import app
+from app import app, db
 from app.models.assets import Assets
 from app.models.branch import Branch
 from app.models.company import Company

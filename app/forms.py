@@ -1,7 +1,6 @@
-""" Contains form for login and register """
 from app.models.user import User
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, IntegerField, FloatField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, FloatField, SelectField, HiddenField
 from wtforms.validators import InputRequired, Length, ValidationError
 
 class RegisterForm(FlaskForm):
@@ -17,16 +16,12 @@ class RegisterForm(FlaskForm):
     def duplicate_email(self, email):
         """ Returns True if email is already used """
         existing_email = User.query.filter_by(email=email).first()
-        if existing_email:
-            return True
-        return False
+        return existing_email is not None
         
     def validate_name(self, name):
         """ Returns True if name is already used """
         existing_name = User.query.filter_by(name=name).first()
-        if existing_name:
-            return True
-        return False
+        return existing_name is not None
     
 
 class LoginForm(FlaskForm):
@@ -39,30 +34,13 @@ class LoginForm(FlaskForm):
 
 class InventoryForm(FlaskForm):
     """ Represents form to add item to inventory """
-    import MySQLdb
-    from os import getenv
-    db = MySQLdb.connect(host=getenv('DB_HOST'), port=int(getenv('DB_PORT')),
-                         user=getenv('DB_USER'),
-                         passwd=getenv('DB_PASSWORD'),
-                         db=getenv('DATABASE'))
-    cur = db.cursor()
-
-    # Capture data from databases to return a list of choices
-    # for user to select the name of an asset/branch, then gets translated to the id.
-    cur.execute("SELECT branch_id, name FROM branch")
-    branch_rows = cur.fetchall()
-    branch_id =  SelectField(choices=[row for row in branch_rows], validators=[InputRequired()], render_kw={"placeholder": "Select Branch"})
-    
-    cur.execute("SELECT asset_id, name FROM assets")
-    asset_rows = cur.fetchall()
-    asset_id = SelectField(choices=[row for row in asset_rows], validators=[InputRequired()], render_kw={"placeholder": "Select Branch"})
-
-    cur.close()
-    db.close()
-    
+    branch_id = SelectField(validators=[InputRequired()], render_kw={"placeholder": "Select Branch"})
+    asset_id = SelectField(validators=[InputRequired()], render_kw={"placeholder": "Select Asset"})
     quantity_in_stock = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Stock Quantity"})
     unit_of_measure = SelectField(choices=['g', 'kg', 'ml', 'L'])
     average_price = FloatField(validators=[InputRequired()], render_kw={"placeholder": "0.00"})
     shelf_life = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Shelf Life"})
     shelf_life_unit = SelectField(choices=['days', 'months', 'years'])
+    user_id = HiddenField(validators=[InputRequired()])
     submit = SubmitField("Add Item to Inventory")
+

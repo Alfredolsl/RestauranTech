@@ -4,9 +4,19 @@
         <div class="itemLogin1"></div>
         <div class="itemLogin2">
             <div class="login1">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flashes">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
                 <h1>RestauranTech</h1>
                 <h2>Register</h2>
                 <form action="" method="POST">
+                    {{ form.hidden_tag() }}
                     <div>{{ form.name }}</div>
                     <div>{{ form.email }}</div>
                     <div>{{ form.password }}</div>
