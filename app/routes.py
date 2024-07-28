@@ -94,11 +94,15 @@ def addinventory():
         shelf_life = form.shelf_life.data
         shelf_life_unit = form.shelf_life_unit.data
         user_id = form.user_id.data
+        new_item = Inventory(branch_id=branch_id,
+                             asset_id=asset_id,
+                             quantity_in_stock=quantity_in_stock,
+                             unit_of_measure=unit_of_measure,
+                             average_price=average_price,
+                             shelf_life=shelf_life,
+                             shelf_life_unit=shelf_life_unit,
+                             user_id=int(user_id))
 
-        new_item = Inventory(branch_id=branch_id, asset_id=asset_id,
-                             quantity_in_stock=quantity_in_stock, unit_of_measure=unit_of_measure,
-                             average_price=average_price, shelf_life=shelf_life,
-                             shelf_life_unit=shelf_life_unit, user_id=user_id)
         db.session.add(new_item)
         db.session.commit()
         flash("Item added successfully!", "success")

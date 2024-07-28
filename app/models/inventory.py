@@ -9,6 +9,7 @@ class Inventory(db.Model, UserMixin):
     average_price = db.Column(db.Float, nullable=False)
     shelf_life = db.Column(db.Integer, nullable=False)
     shelf_life_unit = db.Column(db.String(64), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)
 
     branch_id = db.Column(db.Integer, db.ForeignKey('branch.branch_id'), primary_key=True)
     asset_id = db.Column(db.Integer, db.ForeignKey('assets.asset_id'), primary_key=True)
