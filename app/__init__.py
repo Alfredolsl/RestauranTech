@@ -23,6 +23,7 @@ def connect_db_with_retries(db, max_retries=3):
     else:
         raise Exception('Could not connect to the database.')
 
+
 def create_app():
     app = Flask(__name__)
 

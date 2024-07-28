@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="robots" content="index, follow" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="format-detection" content="telephone=no">
-    <title>Register</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-</head>
-<body>
-    <div class="cntLogin">
+{% extends 'elements/app_base.html' %} {% block title %}Register{% endblock %}
+{% block content %}
+  <div class="cntLogin">
         <div class="itemLogin1"></div>
         <div class="itemLogin2">
             <div class="login1">
@@ -40,5 +30,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
