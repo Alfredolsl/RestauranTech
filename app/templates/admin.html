@@ -39,8 +39,16 @@
                         </div>
                         <nav class="menu">
                             <ul class="nav metismenu" id="sidebar-menu">
-                                <li class="open active">
-                              		<a href="{{ url_for('inventory') }}"><i class="fa fa-folder-open-o"></i> Inventory</a>
+                                <li class="">                                    
+                                    <a> <i class="fa fa-folder-open-o"></i> Inventory <i class="fa arrow"></i></a>
+                                    <ul>
+                                        <li class="">
+                                            <a href="{{ url_for('inventory') }}"> Food</a>
+                                        </li>
+                                        <li class="{{ url_for('inventory') }}">
+                                            <a href=""> Non-Food</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="{{ url_for('costs') }}"><i class="fa fa-clock-o"></i> Costs</a>

@@ -7,22 +7,37 @@
                 <div class="card sameheight-item items" data-exclude="xs,sm,lg">
                     <div class="card-header bordered">
                         <div class="header-block" style="width:100%">
-                            <h3 class="title">Add to Inventory</span></h3>
-                            <a data-href="/administrador/?op=nCat" class="pull-right btn btn-primary btn-sm rounded" id="nCat" data-title="Agregar Categoría">Nueva categoría</a>
+                            <h3 class="title">Add to Inventory</h3>
+                            <a href="{{ url_for('inventory') }}" class="pull-right btn btn-primary btn-sm rounded" >Back</a>
                         </div>
                     </div>
-                    <div>
-                        <p>Usuario ID: {{ user_info.id }}</p>
-                    </div>
                     <form action="" method="POST">
-                        {{ form.branch_id }}
-                        {{ form.asset_id }}
-                        {{ form.quantity_in_stock }}
-                        {{ form.unit_of_measure }}
-                        {{ form.average_price }}
-                        {{ form.shelf_life }}
-                        {{ form.shelf_life_unit }}
-                        {{ form.submit }}
+                        {{ form.hidden_tag() }}
+                        {{ form.user_id }}
+                        <div class="form-group">
+                            {{ form.branch_id.label }} {{ form.branch_id }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.asset_id.label }} {{ form.asset_id }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.quantity_in_stock.label }} {{ form.quantity_in_stock }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.unit_of_measure.label }} {{ form.unit_of_measure }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.average_price.label }} {{ form.average_price }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.shelf_life.label }} {{ form.shelf_life }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.shelf_life_unit.label }} {{ form.shelf_life_unit }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit }}
+                        </div>
                     </form>
                 </div>
             </div>

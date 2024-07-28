@@ -2,6 +2,8 @@ from app import app, db, login_manager
 from app.forms import RegisterForm, LoginForm, InventoryForm
 from app.models.user import User
 from app.models.inventory import Inventory
+from app.models.branch import Branch  # Asegúrate de tener este modelo
+from app.models.assets import Assets  # Asegúrate de tener este modelo
 from flask import render_template, redirect, url_for, flash, session
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -63,9 +65,25 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-@app.route('/inventory', methods=["GET", "POST"])
+@app.route('/inventory')
+@login_required
 def inventory():
+    user_info = {
+        'id': current_user.user_id
+    }
+    return render_template('crm.html', user_info=user_info)
+
+@app.route('/addinventory', methods=["GET", "POST"])
+def addinventory():
+    branches = Branch.query.all()
+    assets = Assets.query.all()
+
+    branch_choices = [(branch.branch_id, branch.name) for branch in branches]
+    asset_choices = [(asset.asset_id, asset.name) for asset in assets]
+
     form = InventoryForm()
+    form.branch_id.choices = branch_choices
+    form.asset_id.choices = asset_choices
 
     if form.is_submitted():
         branch_id = form.branch_id.data
@@ -75,13 +93,24 @@ def inventory():
         average_price = form.average_price.data
         shelf_life = form.shelf_life.data
         shelf_life_unit = form.shelf_life_unit.data
+        user_id = form.user_id.data
 
         new_item = Inventory(branch_id=branch_id, asset_id=asset_id,
                              quantity_in_stock=quantity_in_stock, unit_of_measure=unit_of_measure,
                              average_price=average_price, shelf_life=shelf_life,
-                             shelf_life_unit=shelf_life_unit)
+                             shelf_life_unit=shelf_life_unit, user_id=user_id)
         db.session.add(new_item)
         db.session.commit()
-        print("item added successfully!")
+        flash("Item added successfully!", "success")
+
+    form.user_id.data = current_user.user_id
 
     return render_template('inventory.html', form=form)
+
+@app.route('/costs')
+@login_required
+def costs():
+    user_info = {
+        'id': current_user.user_id
+    }
+    return render_template('crm.html', user_info=user_info)
