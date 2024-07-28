@@ -7,26 +7,23 @@
                 <div class="card sameheight-item items" data-exclude="xs,sm,lg">
                     <div class="card-header bordered">
                         <div class="header-block" style="width:100%">
-                            <h3 class="title">Administrar categorías</span></h3>
+                            <h3 class="title">Add to Inventory</span></h3>
                             <a data-href="/administrador/?op=nCat" class="pull-right btn btn-primary btn-sm rounded" id="nCat" data-title="Agregar Categoría">Nueva categoría</a>
                         </div>
                     </div>
                     <div>
                         <p>Usuario ID: {{ user_info.id }}</p>
                     </div>
-                    <table class="table table-striped table-bordered table-hover flip-content">
-                        <thead class="flip-header">
-                            <tr>
-                                <th class="center" style="width:10%;">#</th>
-                                <th class="center" style="width:10%;">Icono</th>
-                                <th class="center" style="width:40%;">Categoría</th>
-                                <th class="center" style="width:20%;"># Productos</th>
-                                <th class="center" style="width:20%;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resCats" class="short">                   		
-                        </tbody>
-                    </table>
+                    <form action="" method="POST">
+                        {{ form.branch_id }}
+                        {{ form.asset_id }}
+                        {{ form.quantity_in_stock }}
+                        {{ form.unit_of_measure }}
+                        {{ form.average_price }}
+                        {{ form.shelf_life }}
+                        {{ form.shelf_life_unit }}
+                        {{ form.submit }}
+                    </form>
                 </div>
             </div>
         </div>

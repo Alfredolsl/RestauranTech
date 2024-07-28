@@ -1,7 +1,7 @@
 USE `RestauranTech`;
 
 CREATE TABLE IF NOT EXISTS `order` (
-    `order_id` INT NOT NULL,
+    `order_id` INT NOT NULL AUTO_INCREMENT,
     `branch_id` INT NOT NULL,
     `user_id` INT NOT NULL,
     `supplier_id` INT NOT NULL,

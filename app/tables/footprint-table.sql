@@ -1,7 +1,7 @@
 USE `RestauranTech`;
 
 CREATE TABLE `footprint` (
-    `footprint_id` INT NOT NULL,
+    `footprint_id` INT NOT NULL AUTO_INCREMENT,
     `asset_id` INT NOT NULL,
     `footprint_name` VARCHAR(64) NOT NULL,
     `description` VARCHAR(512) NOT NULL,
