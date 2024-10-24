@@ -20,7 +20,14 @@ This project came into existence with well-thought-out work from passionate deve
 * **[Alfredo Lehman](https://www.linkedin.com/in/alfredolsl/)**
 
 # Tutorial
-
+For the web app to work as expected, add a `.env` file at the root of the repository and add the next variables:
+```
+DB_HOST=
+DB_PORT=
+DB_USER=
+DB_PASSWORD=
+DATABASE=
+```
 # Known bugs
 
 # Architecture
