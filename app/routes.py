@@ -22,7 +22,27 @@ def crm():
     user_info = {
         'id': current_user.user_id
     }
-    return render_template('crm.html', user_info=user_info)
+    assets_in_inventory = db.session.query(Assets.asset_id, Assets.picture, Assets.name, Assets.description, Inventory.quantity_in_stock, Inventory.unit_of_measure, Branch.name)\
+                          .join(Inventory, Inventory.asset_id == Assets.asset_id).join(Branch, Inventory.branch_id == Branch.branch_id).all()
+    inventory_data = [
+        {
+            'asset_id': asset_id,
+            'asset_picture': picture,
+            'asset_name': name,
+            'asset_description': description,
+            'quantity_in_stock': quantity_in_stock,
+            'unit_of_measure': unit_of_measure,
+            'branch_name': branch_name
+        }
+        for asset_id, picture, name, description, quantity_in_stock, unit_of_measure, branch_name in assets_in_inventory
+    ]
+    # sorts by asset id to organize without having multiple items scattered throughout the listing
+    inventory_data = sorted(inventory_data, key=lambda x: x['asset_id'])
+
+    # get the provider
+    print(assets_in_inventory)
+
+    return render_template('crm.html', user_info=user_info, inventory_data=inventory_data)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
