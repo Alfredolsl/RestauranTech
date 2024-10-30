@@ -4,7 +4,7 @@ from app.models.user import User
 from app.models.inventory import Inventory
 from app.models.branch import Branch  # Asegúrate de tener este modelo
 from app.models.assets import Assets  # Asegúrate de tener este modelo
-from flask import render_template, redirect, url_for, flash, session
+from flask import render_template, redirect, url_for, flash, session, request
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -103,9 +103,8 @@ def addinventory():
 
     form = InventoryForm()
     form.branch_id.choices = branch_choices
-    form.asset_id.choices = asset_choices
 
-    if form.is_submitted():
+    if form.submit.data and form.validate_on_submit():
         branch_id = form.branch_id.data
         asset_id = form.asset_id.data
         quantity_in_stock = form.quantity_in_stock.data
@@ -128,8 +127,8 @@ def addinventory():
         flash("Item added successfully!", "success")
 
     form.user_id.data = current_user.user_id
-
     return render_template('inventory.html', form=form)
+
 
 @app.route('/costs')
 @login_required

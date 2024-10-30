@@ -1,3 +1,4 @@
+
 {% extends 'admin.html' %}
 {% block content %}
 <article class="content dashboard-page">
@@ -16,12 +17,23 @@
                         {{ form.user_id }}
                         <div class="form-group">
                             {{ form.branch_id.label }} {{ form.branch_id }}
+                            <button type="button" onclick="updateSectionChoices()">Search sections</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="section">Section</label>
+                            <select name="section" id="store_section">
+                                <option value=""></option>
+                            </select>
+                            <button type="button" onclick="updateProductChoices()">Search Products in Section</button>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.asset_id.label }} {{ form.asset_id(onchange='updatePriceField()') }}
+                            <button type="button" onclick="updatePriceField()">Fill Information</button>
                         </div>
                         <div class="form-group">
-                            {{ form.asset_id.label }} {{ form.asset_id }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.quantity_in_stock.label }} {{ form.quantity_in_stock }}
+                            <label for="quantity_in_stock">Quantity to add</label> {{ form.quantity_in_stock }}
                         </div>
                         <div class="form-group">
                             {{ form.unit_of_measure.label }} {{ form.unit_of_measure }}
@@ -44,4 +56,6 @@
         </div>
     </section>
 </article>
+<script src="{{ url_for('static', filename='js/add_inventory/hide_search_button.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_inventory/update_fields.js') }}"></script>
 {% endblock %}
