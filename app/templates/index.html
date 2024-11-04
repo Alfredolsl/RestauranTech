@@ -1,7 +1,7 @@
 {% extends 'elements/base.html' %} {% block title %}Home{% endblock %} {% block
 content %}
 <!--Features Section-->
-<section id="features">
+<section id="landing_page">
   <div
     class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary"
     style="background-image:url('{{ url_for('static', filename='images/hero_background1.webp') }}');background-position:center;background-size: auto 100%;background-repeat:no-repeat;"
@@ -121,6 +121,47 @@ content %}
   </div>
 </section>
 
+<!--Features Section-->
+<section id="features">
+  <div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Features</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+      <div class="col d-flex flex-column align-items-start gap-2">
+        <h2 class="fw-bold text-body-emphasis">
+          Inventory System
+        </h2>
+        <p class="text-body-secondary">
+          Displays all of the items available in the inventory.
+        </p>
+      </div>
+      
+      <div class="col">
+        <div class="row">
+          <img src="{{ url_for('static', filename='images/restaurantech_feature_inventory.png') }}" style="border-radius: 15px;" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+      <div class="col d-flex flex-column align-items-start gap-2">
+        <h2 class="fw-bold text-body-emphasis">
+          Add to Inventory
+        </h2>
+        <p class="text-body-secondary">
+          Add new items from existing supermarket websites.
+        </p>
+      </div>
+      
+      <div class="col">
+        <div class="row">
+          <img src="{{ url_for('static', filename='images/restaurantech_feature_addinventory.gif') }}" style="border-radius: 15px;" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+      
+</section>
+
 <!--About Section-->
 <section id="about">
   <div class="px-4 py-5 my-5 text-center">
@@ -137,7 +178,7 @@ content %}
         <div class="row">
           <div class="col-lg-4">
             <img
-              src="{{ url_for('static', filename='images/alehman.png') }}"
+              src="{{ url_for('static', filename='images/alehman.jpg') }}"
               style="width: 140px; height: 140px; border-radius: 100%"
             />
             <h2 class="fw-normal">Alfredo Lehman</h2>
