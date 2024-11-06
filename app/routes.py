@@ -40,9 +40,13 @@ def crm():
     # sorts by asset id to organize without having multiple items scattered throughout the listing
     inventory_data = sorted(inventory_data, key=lambda x: x['asset_id'])
 
+    assets_unit_of_measure = InventoryForm.unit_of_measure.kwargs.get('choices')
+
+    all_suppliers = db.session.query(Branch.branch_id, Branch.name).all()
+
     # get the provider
 
-    return render_template('crm.html', user_info=user_info, inventory_data=inventory_data)
+    return render_template('crm.html', user_info=user_info, inventory_data=inventory_data, assets_unit_of_measure=assets_unit_of_measure, all_suppliers=all_suppliers)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
