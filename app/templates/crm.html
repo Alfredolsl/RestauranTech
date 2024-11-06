@@ -37,9 +37,9 @@
                                     <td id="quantity-{{ item['asset_id'] }}-{{item['branch_id']}}">{{ item.quantity_in_stock }} {{ item.unit_of_measure }}</td>
                                     <td>{{ item.branch_name }}</td>
                                     <td>
-                                        <button class="rounded btn btn-primary btn-sm" onclick="toggleForm({{ item['asset_id'] }})">Add/Remove Quantity</button>
-                                        <input id="quantity-input-{{ item['asset_id'] }}" type="number" style="display: none;" placeholder="0.0" value="0.0" step="0.01">
-                                        <button id="quantity-button-{{ item['asset_id'] }}" class="rounded btn btn-primary btn-sm" style="display: none;" onclick="submitQuantity({{ item['asset_id'] }}, {{item['branch_id']}})">OK</button>
+                                        <button class="rounded btn btn-primary btn-sm" onclick="toggleForm({{ item['asset_id'] }}, {{item['branch_id']}})">Add/Remove Quantity</button>
+                                        <input id="quantity-input-{{ item['asset_id'] }}-{{item['branch_id']}}" type="number" style="display: none;" placeholder="0.0" value="0.0" step="0.01">
+                                        <button id="quantity-button-{{ item['asset_id'] }}-{{item['branch_id']}}" class="rounded btn btn-primary btn-sm" style="display: none;" onclick="submitQuantity({{ item['asset_id'] }}, {{item['branch_id']}})">OK</button>
                                     </td>
                                 </tr>
                                 {% endfor %}

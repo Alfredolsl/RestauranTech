@@ -65,6 +65,8 @@ def update_quantity():
 
     if inventory_item:
         inventory_item.quantity_in_stock += float(additional_quantity)
+        if inventory_item.quantity_in_stock < 0:
+            inventory_item.quantity_in_stock = 0
         db.session.commit()
         return jsonify(success=True)
     else:
