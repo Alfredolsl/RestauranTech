@@ -8,7 +8,7 @@
                     <div class="card-header bordered">
                         <div class="header-block" style="width:100%">
                             <h3 class="title">Inventory list</h3>
-                            <a href="{{ url_for('addinventory') }}" class="pull-right btn btn-primary btn-sm rounded"data-title="Agregar Categoría">Add Inventory</a>
+                            <a href="{{ url_for('addinventory') }}" class="pull-right btn btn-primary btn-sm rounded"data-title="Agregar Categoría">Add New Item</a>
                         </div>
                     </div>
                     <div>
@@ -34,9 +34,13 @@
                                     <td><img src="static/images/logo.png" style="display: block; margin-left: auto; margin-right:auto; border-radius: 50%; width: 100px;" alt=""></td>
                                     <td>{{ item.asset_name }}</td>
                                     <td>{{ item.asset_description }}</td>
-                                    <td>{{ item.quantity_in_stock }} {{ item.unit_of_measure }}</td>
+                                    <td id="quantity-{{ item['asset_id'] }}-{{item['branch_id']}}">{{ item.quantity_in_stock }} {{ item.unit_of_measure }}</td>
                                     <td>{{ item.branch_name }}</td>
-                                    <td>add quantity, modify item, delete item</td>
+                                    <td>
+                                        <button class="rounded btn btn-primary btn-sm" onclick="toggleForm({{ item['asset_id'] }})">Add/Remove Quantity</button>
+                                        <input id="quantity-input-{{ item['asset_id'] }}" type="number" style="display: none;" placeholder="0.0" value="0.0" step="0.01">
+                                        <button id="quantity-button-{{ item['asset_id'] }}" class="rounded btn btn-primary btn-sm" style="display: none;" onclick="submitQuantity({{ item['asset_id'] }}, {{item['branch_id']}})">OK</button>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             {% endif %}                		
@@ -47,4 +51,6 @@
         </div>
     </section>
 </article>
+<script src="{{ url_for('static', filename='js/crm/submitQuantity.js') }}"></script>
+<script src="{{ url_for('static', filename='js/crm/toggleForm.js') }}"></script>
 {% endblock %}

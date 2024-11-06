@@ -12,7 +12,7 @@
                             <a href="{{ url_for('crm') }}" class="pull-right btn btn-primary btn-sm rounded" >Back</a>
                         </div>
                     </div>
-                    <form action="" method="POST">
+                    <form action="" method="POST" onsubmit="addAssetTextToForm()">
                         {{ form.hidden_tag() }}
                         {{ form.user_id }}
                         <div class="form-group">
@@ -27,6 +27,9 @@
                             </select>
                             <button type="button" onclick="updateProductChoices()">Search Products in Section</button>
                         </div>
+
+                        <!-- Hidden Input to hold asset name to transfer over to form. -->
+                        <input type="hidden" id="asset_text" name="asset_text">
 
                         <div class="form-group">
                             {{ form.asset_id.label }} {{ form.asset_id(onchange='updatePriceField()') }}
@@ -57,5 +60,6 @@
     </section>
 </article>
 <script src="{{ url_for('static', filename='js/add_inventory/hide_search_button.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_inventory/addAssetTextToForm.js') }}"></script>
 <script src="{{ url_for('static', filename='js/add_inventory/update_fields.js') }}"></script>
 {% endblock %}

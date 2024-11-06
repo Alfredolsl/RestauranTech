@@ -41,7 +41,7 @@ class InventoryForm(FlaskForm):
     quantity_in_stock = IntegerField(render_kw={"placeholder": "Stock Quantity"})
     unit_of_measure = SelectField(choices=['g', 'kg', 'ml', 'L', 'pieces'])
     average_price = FloatField(render_kw={"placeholder": "0.00"})
-    shelf_life = IntegerField(render_kw={"placeholder": "Shelf Life"})
+    shelf_life = IntegerField(render_kw={"placeholder": "Shelf Life"}, validators=[InputRequired()])
     shelf_life_unit = SelectField(choices=['days', 'months', 'years'])
     user_id = HiddenField()
     submit = SubmitField("Add Item to Inventory")

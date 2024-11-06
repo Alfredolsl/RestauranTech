@@ -1,6 +1,6 @@
 """ Functions for dynamic inventory form """
 from app import app
-from flask import flash, jsonify, request
+from flask import jsonify, request
 
 
 # @app.route('/update_choices', methods=['POST'])
@@ -18,7 +18,7 @@ from flask import flash, jsonify, request
     
 #     return jsonify(new_choices)
 
-
+# add inventory route
 @app.route('/update_section_field', methods=['POST'])
 def update_section_field():
     ''' updates Section selection field with existing sections within the branch. '''
@@ -49,3 +49,23 @@ def fill_price_field():
     price = float(data.get('price'))
 
     return jsonify(price)
+
+#crm route
+@app.route('/update_quantity', methods=['POST'])
+def update_quantity():
+    from app import db
+    from app.models.inventory import Inventory
+    data = request.get_json()
+    asset_id = data.get('asset_id')
+    branch_id = data.get('branch_id')
+    additional_quantity = data.get('quantity')
+    print(asset_id, branch_id, additional_quantity)
+
+    inventory_item = Inventory.query.filter_by(asset_id=asset_id, branch_id=branch_id).first()
+
+    if inventory_item:
+        inventory_item.quantity_in_stock += float(additional_quantity)
+        db.session.commit()
+        return jsonify(success=True)
+    else:
+        return jsonify(success=False, message='Item not found')
