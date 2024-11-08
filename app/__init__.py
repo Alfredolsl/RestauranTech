@@ -66,3 +66,4 @@ app = create_app()
 
 # Importar las rutas después de la inicialización
 from app import routes
+from app import button_functions
