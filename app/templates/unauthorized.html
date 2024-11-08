@@ -1,0 +1,22 @@
+
+{% extends 'admin.html' %}
+{% block content %}
+<article class="content dashboard-page">
+    <section class="section">
+       <div class="row sameheight-container">
+            <div class="col-xl-12">
+                <div class="card sameheight-item items" data-exclude="xs,sm,lg">
+                    <div class="card-header bordered">
+                        <div class="header-block" style="width:100%">
+                            <h3 class="title">Add to Inventory</h3>
+                            <a href="{{ url_for('crm') }}" class="pull-right btn btn-primary btn-sm rounded" >Back</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<script src="{{ url_for('static', filename='js/add_inventory/hide_search_button.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_inventory/addAssetTextToForm.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_inventory/update_fields.js') }}"></script>
+{% endblock %}

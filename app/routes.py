@@ -24,6 +24,7 @@ def crm():
     }
     assets_in_inventory = db.session.query(Assets.asset_id, Assets.picture, Assets.name, Assets.description, Inventory.quantity_in_stock, Inventory.unit_of_measure, Branch.name, Branch.branch_id)\
                           .join(Inventory, Inventory.asset_id == Assets.asset_id).join(Branch, Inventory.branch_id == Branch.branch_id).all()
+    
     inventory_data = [
         {
             'asset_id': asset_id,
@@ -40,13 +41,22 @@ def crm():
     # sorts by asset id to organize without having multiple items scattered throughout the listing
     inventory_data = sorted(inventory_data, key=lambda x: x['asset_id'])
 
+    # pagination
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    start = (page - 1) * per_page
+    end = start + per_page
+    total_pages = (len(assets_in_inventory) + per_page - 1) // per_page
+    assets_per_page = inventory_data[start:end]
+
     assets_unit_of_measure = InventoryForm.unit_of_measure.kwargs.get('choices')
 
     all_suppliers = db.session.query(Branch.branch_id, Branch.name).all()
 
     # get the provider
 
-    return render_template('crm.html', user_info=user_info, inventory_data=inventory_data, assets_unit_of_measure=assets_unit_of_measure, all_suppliers=all_suppliers)
+    return render_template('crm.html', user_info=user_info, inventory_data=assets_per_page, assets_unit_of_measure=assets_unit_of_measure,
+                            all_suppliers=all_suppliers, total_pages=total_pages, page=page)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():

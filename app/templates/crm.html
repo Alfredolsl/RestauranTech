@@ -76,9 +76,22 @@
                                     </td>
                                 </tr>
                                 {% endfor %}
-                            {% endif %}                		
+                            {% endif %}
                         </tbody>
                     </table>
+                    <p>Page {{ page }} of {{ total_pages }}</p>
+                    {% if page > 1 %}
+                    <a href="{{ url_for('crm', page=1) }}" class="btn btn-primary btn-sm rounded">First</a>
+                    {% endif %}
+                    {% if page > 1 %}
+                    <a href="{{ url_for('crm', page=page-1) }}" class="btn btn-primary btn-sm rounded"><</a>
+                    {% endif %}
+                    {% if page < total_pages %}
+                    <a href="{{ url_for('crm', page=page+1) }}" class="btn btn-primary btn-sm rounded">></a>
+                    {% endif %}
+                    {% if page < total_pages %}
+                    <a href="{{ url_for('crm', page=total_pages) }}" class="btn btn-primary btn-sm rounded">Last</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
