@@ -160,3 +160,10 @@ def costs():
         'id': current_user.user_id
     }
     return render_template('crm.html', user_info=user_info)
+
+
+@app.errorhandler(401)
+def unauthorized(e):
+    """ Error handler if user is not logged in """
+    return 'You are not logged in to visit this page. '\
+            r'<a href="/">Go to home page</a> <a href="/register">Register</a> <a href="/login">Login</a>', 401
