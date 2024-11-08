@@ -70,13 +70,13 @@ function updatePriceField() {
     const unitOfMeasureField = document.getElementById('unit_of_measure');
     const assetText = assetField.options[assetField.selectedIndex].text.toLowerCase();
 
-    if (assetText.includes('kg') || assetText.includes('kgs') || assetText.includes('kilogramo') || assetText.includes('kilogramos')) {
+    if (assetText.includes('kg') || assetText.includes('kgs') || assetText.includes('kilogramo') || assetText.includes('kilogramos') || assetText.includes('kilo')) {
         unitOfMeasureField.value = 'kg';
     } else if (assetText.includes(' g') || assetText.includes('gramos')) {
         unitOfMeasureField.value = 'g';
     } else if (assetText.includes('ml') || assetText.includes('mililitros')) {
         unitOfMeasureField.value = 'ml';
-    }  else if (assetText.includes('pza') || assetText.includes('pzas') || assetText.includes('piezas')) {
+    }  else if (assetText.includes('pza') || assetText.includes('pzas') || assetText.includes('pieza') || assetText.includes('piezas')) {
         unitOfMeasureField.value = 'pieces';
     } else if (assetText.includes(' l') || assetText.includes('litros')) {
         unitOfMeasureField.value = 'L';
@@ -95,7 +95,6 @@ function updatePriceField() {
     } else {
         quantityInStockField.value = amountFromAssetText;
     }
-    
 }
 
 
