@@ -12,4 +12,4 @@ from app.models.user_to_branch import User_to_branch
 from app.models.user import User
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
