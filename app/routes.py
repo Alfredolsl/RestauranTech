@@ -110,7 +110,7 @@ def addinventory():
     branches = Branch.query.all()
     assets = Assets.query.all()
 
-    branch_choices = [(branch.branch_id, branch.name) for branch in branches][1:]
+    branch_choices = [(branch.branch_id, branch.name) for branch in branches][:1]
     form = InventoryForm()
     form.branch_id.choices = branch_choices
 
