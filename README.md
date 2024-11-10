@@ -23,8 +23,10 @@ This project came into existence with well-thought-out work from passionate deve
 
 ## Deployed Project
 **[Restaurantech](https://restaurantech.onrender.com/)**
+![RestauranTech](https://github.com/Alfredolsl/RestauranTech/blob/main/app/static/images/restaurantech_feature_inventory.png)
 ## Learn more about the project
 **[Blog Post](https://www.linkedin.com/pulse/restaurantech-my-first-web-application-alfredo-lopez-fb7oc/?trackingId=5icztELj1UXYLg2WC6ZfkA%3D%3D)**
+
 
 # Tutorial
 ## Installation
