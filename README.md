@@ -80,6 +80,14 @@ For using the core functions:
 * Click 'Add Item to Inventory'
 * Click 'Back', you will see the new item added to the Inventory table.
 
+# Built with
+* Python - The Backend language
+* JavaScript - The Frontend language
+* Flask - Web Development Framework
+* SQLAlchemy - Python SQL toolkit and ORM (Object Relational Mapper)
+* MySQL - Relational Database Management System
+* Bootstrap - Frontend development framework
+
 # Contributing
 We've come a long way to make this project what it is. However, the development doesn't stop here, and your contributions are crucial for our improvement.
 
