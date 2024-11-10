@@ -53,8 +53,6 @@ def crm():
 
     all_suppliers = db.session.query(Branch.branch_id, Branch.name).all()
 
-    # get the provider
-
     return render_template('crm.html', user_info=user_info, inventory_data=assets_per_page, assets_unit_of_measure=assets_unit_of_measure,
                             all_suppliers=all_suppliers, total_pages=total_pages, page=page)
 
@@ -112,7 +110,7 @@ def addinventory():
     branches = Branch.query.all()
     assets = Assets.query.all()
 
-    branch_choices = [(branch.branch_id, branch.name) for branch in branches]
+    branch_choices = [(branch.branch_id, branch.name) for branch in branches][1:]
     form = InventoryForm()
     form.branch_id.choices = branch_choices
 
