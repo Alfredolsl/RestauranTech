@@ -90,6 +90,29 @@ We appreciate your support and feedback to making our project better!
 # Known bugs
 The 'Fill Information' button doesn't fill out the Shelf Life form, so expect to manually input a number in that field.
 
+# About this project
+My team members are really passionate for developing applications, and even more passionate if said application can improve or aid the life or work of the users. When we were reviewing what topic or problem we could develop on and possibly solve, we first chose to turn music lyrics into images in real-time using Artificial Intelligence, we took a step back and turned our perspective into our surroundings, then, to our community.
+
+Whenever we started a meeting, we always started to talk about how was our day, what we ate, etc. Our frequent topic was about food, and one of our members, with experience on working with restaurants, pointed out that restaurants may have trouble managing their inventory. With this problem at hand, we delved into the problem, and we all agreed to change the scope of the project and focus on what we were comfortable on developing and, of course, passionate about.
+
+Oddly enough, I didn't have any idea about how our project topic was going to be about restaurants, but having listened to my other team members talk with sheer curiosity about what roles they want in the development and the results were expecting, I knew I couldn't deny their happiness from this newfound topic, so I decided to fill on the parts to work on, fortunately, with the development of the app, it was entertaining progressing on the functionality of the app. A funny thing about developing this app was when the sessions felt like meditating for me! My mind went quiet whenever there was a problem to solve and how to implement a solution on it.
+
+# About the Devs 
+## What Alfredo learned from this
+What I've learned
+I'm really proud the amount of work I delivered in this project, and these are the numerous key skills I gained experience in:
+
+* Backend development
+* Database management - Learnt how to structure relational databases.
+* AJAX and front-back interactivity - With discovering the benefits of using JavaScript, I won't fear using it for future projects.
+* Data handling - This is an important skill for building interactive applications, such as this project.
+* Problem-solving
+
+## What's next for Alfredo?
+Developing this type of work is almost therapeutic for me; I calm down, my mind goes quiet, and I can achieve progress (or even exponential progress if I wear noise-cancelling headphones!). With insight gained from this project and the fundamentals learned of building projects, my next step in life is seeing what type of technical and creative work I could go into in the future, and what to setup for my portfolio. From what I've interacted with, augmented and virtual reality are new and exciting topics for me, and Unity sounds fun.
+
+Thanks for reading! I'm Alfredo, a passionate developer and creative that would love to do multiple types of work in life! From technical work, such as programming software, to creative work like 3D art!
+
 # Licensing
 MIT License
 
