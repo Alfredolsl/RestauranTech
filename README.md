@@ -9,7 +9,7 @@ RestauranTech is a web application designed to optimize restaurant operations th
 RestauranTech was made to help!
 We are looking to aid:
 * Restaurant owners and managers
-* Restaurant administration staff
+* Restaurant administration staff members
 * Chefs and kitchen staff
 * Suppliers and distributors
 
@@ -35,17 +35,16 @@ Install the required python packages inside `requirements.txt` with the followin
 pip install -r requirements.txt
 ```
 
-For the web app to work correctly, make sure to have a MySQL database with the tables inside **[app/tables](https://github.com/Alfredolsl/RestauranTech/tree/main/app/tables)**
+For the web app to work correctly, make sure to have a MySQL database with the tables inside **[app/tables directory](https://github.com/Alfredolsl/RestauranTech/tree/main/app/tables)**
 
-For the web app to work as expected, add a `.env` file at the root of the repository with the following variables:
+For the web app to work as expected, create a `.env` file at the root of the repository with the following variables, filling in the values with your MySQL database credentials:
 ```
-DB_HOST=
-DB_PORT=
-DB_USER=
-DB_PASSWORD=
-DATABASE=
+DB_HOST=<your_database_host>
+DB_PORT=<your_database_port>
+DB_USER=<your_database_username>
+DB_PASSWORD=<your_database_password>
+DATABASE=<your_database_name>
 ```
-It is necessary to have a working MySQL database.
 
 
 # Usage
@@ -71,18 +70,19 @@ Now one of the two links provided by the app should send you to your browser of 
 For using the core functions:
 * Log In with your account or create a new one.
 * After logging in, you're redirected to the admin panel.
-* Add new items on the 'Add New Item' button.
+* Click the 'Add New Item' button to add new items.
 * In the form, select the available branch in the Branch field, then click 'Search Sections' button.
 * After that, choose the section of your choice, then click 'Search Products in Section'.
 * You should get a list of items (currently in spanish), choose the one you want to add, then click 'Fill Information'
 * Make sure that everything is filled out to your liking
 * Then, add the Shelf life in the Shelf life form.
 * Click 'Add Item to Inventory'
-* Click 'Back', you will see the new item added to the Inventory table.
+* Click 'Back'.
+* You will see the new item added to the Inventory table.
 
 # Built with
-* Python - The Backend language
-* JavaScript - The Frontend language
+* Python - Backend programming language
+* JavaScript - Client-side programming language
 * Flask - Web Development Framework
 * SQLAlchemy - Python SQL toolkit and ORM (Object Relational Mapper)
 * MySQL - Relational Database Management System
@@ -96,7 +96,7 @@ Please feel free to contribute by forking this repo or message **[Alfredo via Li
 We appreciate your support and feedback to making our project better!
 
 # Known bugs
-The 'Fill Information' button doesn't fill out the Shelf Life form, so expect to manually input a number in that field.
+The 'Fill Information' button doesn't fill out the Shelf Life form, you'll need to manually input a number in that field.
 
 # About this project
 My team members are really passionate for developing applications, and even more passionate if said application can improve or aid the life or work of the users. When we were reviewing what topic or problem we could develop on and possibly solve, we first chose to turn music lyrics into images in real-time using Artificial Intelligence, we took a step back and turned our perspective into our surroundings, then, to our community.
@@ -106,9 +106,8 @@ Whenever we started a meeting, we always started to talk about how was our day, 
 Oddly enough, I didn't have any idea about how our project topic was going to be about restaurants, but having listened to my other team members talk with sheer curiosity about what roles they want in the development and the results were expecting, I knew I couldn't deny their happiness from this newfound topic, so I decided to fill on the parts to work on, fortunately, with the development of the app, it was entertaining progressing on the functionality of the app. A funny thing about developing this app was when the sessions felt like meditating for me! My mind went quiet whenever there was a problem to solve and how to implement a solution on it.
 
 # About the Devs 
-## What Alfredo learned from this
-What I've learned
-I'm really proud the amount of work I delivered in this project, and these are the numerous key skills I gained experience in:
+## What Alfredo learned
+I’m proud of the work I contributed to this project, and I gained experience in several key skills, including:
 
 * Backend development
 * Database management - Learnt how to structure relational databases.
